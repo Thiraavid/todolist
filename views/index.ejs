@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Todo List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 2rem;
+        background: #f2f2f2;
+        text-align: center;
+      }
+      input, button {
+        padding: 0.5rem;
+        font-size: 16px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        margin: 1rem 0;
+        background: #fff;
+        padding: 0.5rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+    <form action="/add" method="POST">
+      <input type="text" name="task" placeholder="Enter task" required />
+      <button type="submit">Add</button>
+    </form>
+    <ul>
+      <% todos.forEach(todo => { %>
+        <li>
+          <span><%= todo.task %></span>
+          <form action="/delete/<%= todo.id %>" method="POST" style="margin: 0;">
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>
